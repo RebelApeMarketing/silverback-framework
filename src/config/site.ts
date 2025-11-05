@@ -26,23 +26,23 @@ export type SiteConfig = {
 }
 
 const raw: SiteConfig = {
-  companyName: "Client Company Name",
-  logo: "/images/rebel-ape-marketing-logo.png",
-  site: "url-example.com",
-  phone: "(801) 555-1212",
-  email: "hello@example.com",
-  address: "123 Main St",
-  city: "Ogden",
-  state: "UT",
-  zip: "84401",
-  hours: "Mon–Fri 8am–6pm",
+  companyName: "Your Company Name",
+  logo: "/images/logo.png",
+  site: "yourwebsite.com",
+  phone: "(555) 123-4567",
+  email: "info@yourcompany.com",
+  address: "123 Main Street",
+  city: "Your City",
+  state: "ST",
+  zip: "12345",
+  hours: "Mon–Fri 8am–6pm, Sat 9am–2pm",
   socials: {
-    facebook: "https://facebook.com/example",
-    instagram: "https://instagram.com/example",
-    linkedin: "https://linkedin.com/company/example"
+    facebook: "https://facebook.com/yourcompany",
+    instagram: "https://instagram.com/yourcompany",
+    linkedin: "https://linkedin.com/company/yourcompany"
   },
-  primaryColor: "#0b5fff",
-  accentColor: "#00c389"
+  primaryColor: "#3b82f6",
+  accentColor: "#10b981"
 }
 
 // helper to normalize phone for tel: links

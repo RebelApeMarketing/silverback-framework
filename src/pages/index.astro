@@ -2,31 +2,88 @@
 import Layout from "../layouts/BaseLayout.astro";
 import Header from "../components/Header.astro";
 import Hero from "../components/Hero.astro";
-import Testimonials from "../components/Testimonials.astro";
-import WhyCall from "../components/WhyCall.astro";
-import CtaInline from "../components/CtaInline.astro";
+import WhatHappens from "../components/WhatHappens.astro";
+import HowDoIKnow from "../components/HowDoIKnow.astro";
+import Features from "../components/Features.astro";
+import WhatYouGet from "../components/WhatYouGet.astro";
+import TheDifference from "../components/TheDifference.astro";
+import ScheduleNow from "../components/ScheduleNow.astro";
+import ServiceAreas from "../components/ServiceAreas.astro";
+import Certifications from "../components/Certifications.astro";
+import SocialProof from "../components/SocialProof.astro";
 import Faq from "../components/Faq.astro";
+import ScheduleForm from "../components/ScheduleForm.astro";
+import Cta from "../components/Cta.astro";
 import Footer from "../components/Footer.astro";
 ---
 
-<Layout title="Expert Help When You Need It">
+<Layout title="Professional Services You Can Trust">
   <Header />
-  
+
+  <!-- Hero Section -->
   <Hero
-    eyebrow="OVER 1,000 ROOFS REPAIRED OR REPLACED"
-    headline="Get Expert Roofing Help in Minutes, Not Days"
-    subhead="Call CTI Roofing directly. No waiting on hold. Real experts ready to solve your roofing problem right now."
-    primaryText="Call Now: (801) 316-8799"
-    primaryHref="tel:+18013168799"
+    headline="Your Trusted Partner for Professional Services"
+    subhead="Get expert help when you need it most."
   />
 
-  <WhyCall />
+  <!-- What Happens Section -->
+  <section class="bg-white">
+    <WhatHappens />
+  </section>
 
-  <Testimonials />
+  <!-- How Do I Know Section -->
+  <section class="bg-gray-50">
+    <HowDoIKnow />
+  </section>
 
-  <CtaInline />
+  <!-- Features/Benefits Section -->
+  <section class="bg-white">
+    <Features />
+  </section>
 
-  <Faq />
+  <!-- What You Get Section -->
+  <section class="bg-gray-50">
+    <WhatYouGet />
+  </section>
 
+  <!-- The Difference Section -->
+  <section class="bg-white">
+    <TheDifference />
+  </section>
+
+  <!-- Schedule Now Section -->
+  <section class="bg-gray-50">
+    <ScheduleNow />
+  </section>
+
+  <!-- Service Areas Section -->
+  <section class="bg-white">
+    <ServiceAreas />
+  </section>
+
+  <!-- Certifications Section -->
+  <section class="bg-gray-50">
+    <Certifications />
+  </section>
+
+  <!-- Social Proof / Testimonials Section -->
+  <section class="bg-white">
+    <SocialProof />
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="bg-gray-50">
+    <Faq />
+  </section>
+
+  <!-- Schedule Form Section -->
+  <section class="bg-white">
+    <ScheduleForm />
+  </section>
+
+  <!-- CTA Section -->
+  <Cta />
+
+  <!-- Footer -->
   <Footer />
 </Layout>

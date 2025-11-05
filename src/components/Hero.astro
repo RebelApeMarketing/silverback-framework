@@ -1,54 +1,91 @@
 ---
+import Button from './Button.astro';
+import { site } from '../config/site';
+
 interface Props {
   eyebrow?: string;
   headline: string;
   subhead: string;
+  bodyText?: string;
   primaryText?: string;
   primaryHref?: string;
+  secondaryText?: string;
+  secondaryHref?: string;
+  showChecklist?: boolean;
+  checklistItems?: string[];
 }
 
-const { 
-  eyebrow = "OVER 1,000 ROOFS REPAIRED OR REPLACED",
-  headline = "Get Expert Roofing Help in Minutes, Not Days",
-  subhead,
+const {
+  eyebrow = "TRUSTED BY THOUSANDS OF SATISFIED CUSTOMERS",
+  headline = "Your Trusted Partner for Professional Services",
+  subhead = "Get expert help when you need it most.",
+  bodyText = "We deliver exceptional results with a commitment to quality and customer satisfaction.",
   primaryText = "Call Now",
-  primaryHref = "tel:+18013168799"
+  primaryHref = site.phoneHref,
+  secondaryText = "Schedule Service",
+  secondaryHref = "#schedule",
+  showChecklist = true,
+  checklistItems = [
+    "Licensed & Insured Professionals",
+    "Same-Day Service Available",
+    "100% Satisfaction Guarantee"
+  ]
 } = Astro.props;
 ---
 
-<section 
-  class="relative w-full bg-cover bg-center py-20 md:py-32 pt-42 md:pt-20"
-  style="background-image: url('https://RebelApeCDN.b-cdn.net/CTI-Roofing/hero-roofing-crew.webp')"
->
+<section class="relative w-full bg-cover bg-center py-20 md:py-32 pt-42 md:pt-20">
+  <!-- Background Image Placeholder -->
+  <div class="absolute inset-0 bg-gradient-to-br from-blue-600 to-blue-800"></div>
+
   <!-- Dark overlay for text contrast -->
-  <div class="absolute inset-0 bg-black/60"></div>
-  
+  <div class="absolute inset-0 bg-black/50"></div>
+
   <div class="relative max-w-6xl mx-auto px-6 text-center">
     {eyebrow && (
-      <p class="text-lg font-semibold text-green-400 uppercase tracking-wider mb-4">
+      <p class="text-base md:text-lg font-bold text-green-400 uppercase tracking-wider mb-4">
         {eyebrow}
       </p>
     )}
-    
-    <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
+
+    <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white mb-6 leading-tight">
       {headline}
     </h1>
-    
-    <p class="text-lg md:text-xl text-gray-100 mb-10 leading-relaxed max-w-2xl mx-auto">
+
+    <p class="text-xl md:text-2xl font-bold text-white mb-4 leading-relaxed max-w-3xl mx-auto">
       {subhead}
     </p>
 
-    <!-- Primary CTA Button -->
-    <div class="flex flex-col gap-4 justify-center items-center">
-      <a 
-        href={primaryHref}
-        class="inline-block rounded-lg bg-green-600 text-white px-8 py-4 text-lg font-semibold hover:bg-green-700 transition duration-200 shadow-lg hover:shadow-xl drop-shadow-lg"
-      >
-        {primaryText}
-      </a>
-      <p class="text-sm text-gray-200">
-        Mon-Fri 8am-7pm, Sat 9am-12pm
+    {bodyText && (
+      <p class="text-base md:text-lg text-gray-100 mb-10 leading-relaxed max-w-2xl mx-auto">
+        {bodyText}
       </p>
+    )}
+
+    <!-- CTA Buttons -->
+    <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
+      <Button href={primaryHref} variant="primary" size="lg">
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
+        </svg>
+        {primaryText}
+      </Button>
+      <Button href={secondaryHref} variant="outline" size="lg" class="text-white border-white">
+        {secondaryText}
+      </Button>
     </div>
+
+    <!-- Checklist -->
+    {showChecklist && checklistItems && (
+      <div class="flex flex-wrap justify-center gap-x-8 gap-y-3 text-white">
+        {checklistItems.map((item) => (
+          <div class="flex items-center gap-2">
+            <svg class="w-5 h-5 text-green-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+            </svg>
+            <span class="text-sm md:text-base font-medium">{item}</span>
+          </div>
+        ))}
+      </div>
+    )}
   </div>
 </section>

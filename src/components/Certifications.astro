@@ -1,0 +1,44 @@
+---
+interface Props {
+  headline?: string;
+  subtext?: string;
+}
+
+const {
+  headline = "Certifications & Credentials",
+  subtext = "Fully licensed, insured, and certified to serve you with excellence."
+} = Astro.props;
+
+const certifications = [
+  { name: "Licensed Professional", image: "https://placehold.co/200x150/3b82f6/ffffff?text=Licensed" },
+  { name: "Fully Insured", image: "https://placehold.co/200x150/10b981/ffffff?text=Insured" },
+  { name: "Industry Certified", image: "https://placehold.co/200x150/8b5cf6/ffffff?text=Certified" },
+  { name: "BBB Accredited", image: "https://placehold.co/200x150/f59e0b/ffffff?text=BBB" },
+  { name: "Safety Certified", image: "https://placehold.co/200x150/ef4444/ffffff?text=Safety" },
+  { name: "Quality Assured", image: "https://placehold.co/200x150/06b6d4/ffffff?text=Quality" },
+  { name: "Warranty Provider", image: "https://placehold.co/200x150/ec4899/ffffff?text=Warranty" },
+  { name: "Award Winner", image: "https://placehold.co/200x150/f97316/ffffff?text=Award" }
+];
+---
+
+<section class="py-16 md:py-24">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">{headline}</h2>
+      <p class="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">{subtext}</p>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+      {certifications.map((cert) => (
+        <div class="bg-white border-2 border-gray-200 rounded-lg p-6 flex flex-col items-center justify-center hover:border-blue-600 hover:shadow-lg transition-all duration-300">
+          <img
+            src={cert.image}
+            alt={cert.name}
+            class="w-full h-auto mb-3 rounded"
+          />
+          <p class="text-sm font-semibold text-center">{cert.name}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

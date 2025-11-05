@@ -1,0 +1,160 @@
+---
+import Button from './Button.astro';
+import { site } from '../config/site';
+
+interface Props {
+  headline?: string;
+  subtext?: string;
+}
+
+const {
+  headline = "Schedule Your Service",
+  subtext = "Fill out the form below and we'll get back to you shortly."
+} = Astro.props;
+---
+
+<section class="py-16 md:py-24" id="schedule">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">{headline}</h2>
+      <p class="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">{subtext}</p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      <!-- Left Column - Help Box -->
+      <div class="md:col-span-1">
+        <div class="bg-blue-50 border-2 border-blue-200 rounded-lg p-6 sticky top-24">
+          <h3 class="text-2xl font-bold mb-4">Need Help Today?</h3>
+          <p class="text-gray-700 mb-6">
+            Our team is standing by to assist you with your service needs. Give us a call for immediate assistance.
+          </p>
+
+          <Button href={site.phoneHref} variant="primary" size="lg" class="w-full mb-4">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
+            </svg>
+            Call {site.phone}
+          </Button>
+
+          <div class="text-sm text-gray-600">
+            <p class="mb-2"><strong>Business Hours:</strong></p>
+            <p>{site.hours}</p>
+            <p class="mt-4 text-xs italic">
+              We're here to help. If we miss your call, we'll call back within 15 minutes during business hours.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column - Form -->
+      <div class="md:col-span-2">
+        <form
+          name="contact"
+          method="POST"
+          data-netlify="true"
+          netlify-honeypot="bot-field"
+          class="bg-white border-2 border-gray-200 rounded-lg p-8"
+        >
+          <input type="hidden" name="form-name" value="contact" />
+          <p class="hidden">
+            <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+          </p>
+
+          <div class="grid md:grid-cols-2 gap-6 mb-6">
+            <div>
+              <label for="firstName" class="block text-sm font-semibold text-gray-700 mb-2">
+                First Name *
+              </label>
+              <input
+                type="text"
+                id="firstName"
+                name="firstName"
+                required
+                class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-600 focus:outline-none transition"
+              />
+            </div>
+
+            <div>
+              <label for="lastName" class="block text-sm font-semibold text-gray-700 mb-2">
+                Last Name *
+              </label>
+              <input
+                type="text"
+                id="lastName"
+                name="lastName"
+                required
+                class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-600 focus:outline-none transition"
+              />
+            </div>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-6 mb-6">
+            <div>
+              <label for="email" class="block text-sm font-semibold text-gray-700 mb-2">
+                Email Address *
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-600 focus:outline-none transition"
+              />
+            </div>
+
+            <div>
+              <label for="phone" class="block text-sm font-semibold text-gray-700 mb-2">
+                Phone Number *
+              </label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                required
+                class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-600 focus:outline-none transition"
+              />
+            </div>
+          </div>
+
+          <div class="mb-6">
+            <label for="service" class="block text-sm font-semibold text-gray-700 mb-2">
+              Service Needed
+            </label>
+            <select
+              id="service"
+              name="service"
+              class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-600 focus:outline-none transition"
+            >
+              <option value="">Select a service...</option>
+              <option value="consultation">Free Consultation</option>
+              <option value="service">Service Request</option>
+              <option value="estimate">Free Estimate</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <div class="mb-6">
+            <label for="message" class="block text-sm font-semibold text-gray-700 mb-2">
+              Message
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              rows="4"
+              class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-600 focus:outline-none transition"
+              placeholder="Tell us about your needs..."
+            ></textarea>
+          </div>
+
+          <Button type="submit" variant="primary" size="lg" class="w-full">
+            Submit Request
+          </Button>
+
+          <p class="text-xs text-gray-600 mt-4 text-center">
+            By submitting this form, you agree to be contacted about your service request.
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
